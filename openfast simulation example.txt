@@ -1,0 +1,230 @@
+================== Parameters for Binary Bladed-style Full-Field files   [used only for WindType = 4 or WindType = 7] =========
+"../AWT27/Wind/Shr12_30"    FileNameRoot   - WindType=4: Rootname of the full-field wind file to use (.wnd, .sum); WindType=7: name of the intermediate file with wind scaling values
+False         TowerFile      - Have tower file (.twr) (flag) ignored when WindType = 7
+================== Parameters for HAWC-format binary files  [Only used with WindType = 5] =====================
+"wasp\Output\basic_5u.bin"    FileName_u     - name of the file containing the u-component fluctuating wind (.bin)
+"wasp\Output\basic_5v.bin"    FileName_v     - name of the file containing the v-component fluctuating wind (.bin)
+"wasp\Output\basic_5w.bin"    FileName_w     - name of the file containing the w-component fluctuating wind (.bin)
+         64   nx             - number of grids in the x direction (in the 3 files above) (-)
+         32   ny             - number of grids in the y direction (in the 3 files above) (-)
+         32   nz             - number of grids in the z direction (in the 3 files above) (-)
+         16   dx             - distance (in meters) between points in the x direction    (m)
+          3   dy             - distance (in meters) between points in the y direction    (m)
+          3   dz             - distance (in meters) between points in the z direction    (m)
+     42.672   RefHt_Hawc     - reference height; the height (in meters) of the vertical center of the grid (m)
+  -------------   Scaling parameters for turbulence   ---------------------------------------------------------
+          1   ScaleMethod    - Turbulence scaling method   [0 = none, 1 = direct scaling, 2 = calculate scaling factor based on a desired standard deviation]
+          1   SFx            - Turbulence scaling factor for the x direction (-)   [ScaleMethod=1]
+          1   SFy            - Turbulence scaling factor for the y direction (-)   [ScaleMethod=1]
+jessesarpong-mensah@MacBookAir AWT_YFree_WSt % python3 ~/sweep.py AWT_YFree_WSt_InflowWind.dat PropagationDir=0:20 RefHt=10:50 RefHt_Uni=10:50 -n 30 --workers 4
+[0] FAILED: PropagationDir_4.8174_RefHt_28.0815_RefHt_Uni_47.5219
+[1] FAILED: PropagationDir_8.8684_RefHt_43.2078_RefHt_Uni_14.0325
+[3] FAILED: PropagationDir_17.6997_RefHt_40.1723_RefHt_Uni_23.431
+[2] FAILED: PropagationDir_4.1592_RefHt_36.9519_RefHt_Uni_23.1625
+[6] FAILED: PropagationDir_10.1149_RefHt_18.4911_RefHt_Uni_39.6559
+[7] FAILED: PropagationDir_3.7636_RefHt_48.7057_RefHt_Uni_40.8092
+[4] FAILED: PropagationDir_9.5708_RefHt_19.5697_RefHt_Uni_21.4088
+[5] FAILED: PropagationDir_18.5152_RefHt_47.9272_RefHt_Uni_19.2482
+[9] FAILED: PropagationDir_5.9708_RefHt_29.7943_RefHt_Uni_46.4226
+[11] FAILED: PropagationDir_15.753_RefHt_38.7073_RefHt_Uni_35.0807
+[10] FAILED: PropagationDir_12.8368_RefHt_30.0433_RefHt_Uni_20.2322
+[8] FAILED: PropagationDir_18.8144_RefHt_44.4071_RefHt_Uni_16.0444
+[12] FAILED: PropagationDir_2.5801_RefHt_25.3657_RefHt_Uni_12.3641
+[13] FAILED: PropagationDir_0.8868_RefHt_26.7505_RefHt_Uni_10.2231
+[14] FAILED: PropagationDir_16.1998_RefHt_13.5835_RefHt_Uni_35.557
+[15] FAILED: PropagationDir_8.1302_RefHt_34.8167_RefHt_Uni_49.6156
+[17] FAILED: PropagationDir_3.3284_RefHt_22.2841_RefHt_Uni_43.7802
+[16] FAILED: PropagationDir_0.2117_RefHt_24.4803_RefHt_Uni_31.0668
+[19] FAILED: PropagationDir_14.2875_RefHt_33.8136_RefHt_Uni_27.1806
+[18] FAILED: PropagationDir_19.5299_RefHt_40.959_RefHt_Uni_32.0548
+[23] FAILED: PropagationDir_6.3755_RefHt_45.7139_RefHt_Uni_42.7886
+[22] FAILED: PropagationDir_12.2939_RefHt_12.2614_RefHt_Uni_17.9589
+[21] FAILED: PropagationDir_10.8233_RefHt_31.8204_RefHt_Uni_33.2619
+[20] FAILED: PropagationDir_16.8877_RefHt_16.0385_RefHt_Uni_38.5797
+[24] FAILED: PropagationDir_1.4311_RefHt_15.0214_RefHt_Uni_13.9223
+[27] FAILED: PropagationDir_15.0624_RefHt_20.9146_RefHt_Uni_45.7774
+[26] FAILED: PropagationDir_6.962_RefHt_35.6215_RefHt_Uni_27.7809
+[25] FAILED: PropagationDir_13.8124_RefHt_10.9419_RefHt_Uni_29.1174
+[29] FAILED: PropagationDir_11.6921_RefHt_17.785_RefHt_Uni_25.3319
+[28] FAILED: PropagationDir_7.9849_RefHt_47.2133_RefHt_Uni_37.0369
+
+done: 0 succeeded, 30 failed
+failed runs logged to sweep_failed.txt
+jessesarpong-mensah@MacBookAir AWT_YFree_WSt % cd ..
+jessesarpong-mensah@MacBookAir myexample % clear
+
+jessesarpong-mensah@MacBookAir myexample % ls
+AWT_YFree_WSt	AWT27
+jessesarpong-mensah@MacBookAir myexample % python3 ~/case_setup.py AWT_YFix_WSt
+copied AWT_YFix_WSt
+copied AWT27 (needed by AWT_YFix_WSt)
+jessesarpong-mensah@MacBookAir myexample % ls
+AWT_YFix_WSt	AWT27
+jessesarpong-mensah@MacBookAir myexample % cd AWT_YFix_WSt
+jessesarpong-mensah@MacBookAir AWT_YFix_WSt % ls
+AWT_YFix_WSt_AeroDyn.dat	AWT_YFix_WSt_ServoDyn.dat	AWT_YFix_WSt.ED.sum		AWT_YFix_WSt.out		AWT_YFix_WSt.sum		vtk
+AWT_YFix_WSt_ElastoDyn.dat	AWT_YFix_WSt.AD.sum		AWT_YFix_WSt.fst		AWT_YFix_WSt.outb		AWT_YFix_WSt.UA.sum
+AWT_YFix_WSt_InflowWind.dat	AWT_YFix_WSt.ech		AWT_YFix_WSt.IfW.sum		AWT_YFix_WSt.SrvD.sum		README.md
+jessesarpong-mensah@MacBookAir AWT_YFix_WSt % python3 ~/fix_output.py AWT_YFix_WSt.fst
+AWT_YFix_WSt.fst: OutFileFmt set to 1 (text output)
+jessesarpong-mensah@MacBookAir AWT_YFix_WSt % ls
+AWT_YFix_WSt_AeroDyn.dat	AWT_YFix_WSt_ServoDyn.dat	AWT_YFix_WSt.ED.sum		AWT_YFix_WSt.out		AWT_YFix_WSt.sum		vtk
+AWT_YFix_WSt_ElastoDyn.dat	AWT_YFix_WSt.AD.sum		AWT_YFix_WSt.fst		AWT_YFix_WSt.outb		AWT_YFix_WSt.UA.sum
+AWT_YFix_WSt_InflowWind.dat	AWT_YFix_WSt.ech		AWT_YFix_WSt.IfW.sum		AWT_YFix_WSt.SrvD.sum		README.md
+jessesarpong-mensah@MacBookAir AWT_YFix_WSt % openfast AWT_YFix_WSt.fst
+
+ **************************************************************************************************
+ OpenFAST
+
+ Copyright (C) 2026 National Renewable Energy Laboratory
+ Copyright (C) 2026 Envision Energy USA LTD
+
+ This program is licensed under Apache License Version 2.0 and comes with ABSOLUTELY NO WARRANTY.
+ See the "LICENSE" file distributed with this software for details.
+ **************************************************************************************************
+
+ OpenFAST-v5.0.0
+ Compile Info:
+  - Compiler: GCC version 15.2.0
+  - Architecture: 64 bit
+  - Precision: single
+  - OpenMP: No
+  - Date: Mar 13 2026
+  - Time: 03:21:35
+ Execution Info:
+  - Date: 09/23/2026
+  - Time: 19:34:13+0000
+
+ OpenFAST input file heading:
+     FAST Certification Test #01: AWT-27CR2 with many DOFs with fixed yaw error and steady wind
+
+  Running ElastoDyn.
+  Running InflowWind.
+  Running AeroDyn.
+    AeroDyn: projMod: 1
+    Projection: legacy (NoSweepPitchTwist), BEM: legacy (2D), MomentumCorrection, Sector Average
+  Running ServoDyn.
+ Using generic blade surfaces for AeroDyn (S809 airfoil, assumed chord, twist, AC).
+  Time: 0 of 20 seconds.
+
+ FAST_Solution:FAST_UpdateStates:Solver_Step:FAST_CalcOutput:AD_CalcOutput:RotCalcOutput:BEMT_CalcO
+ utput(node 2, blade 1):UA_CalcOutput:UA_BlendSteady:Temporarily turning off UA due to high angle
+ of attack or low relative velocity. This warning will not be repeated though the condition may
+ persist.
+
+                                                                                                  
+  Total Real Time:       7.396 seconds
+  Total CPU Time:        7.11 seconds
+  Simulation CPU Time:   7.0389 seconds
+  Simulated Time:        20 seconds
+  Time Ratio (Sim/CPU):  2.8414
+
+  OpenFAST terminated normally.
+
+jessesarpong-mensah@MacBookAir AWT_YFix_WSt % head -40 AWT_YFix_WSt_InflowWind.dat
+------- InflowWind INPUT FILE -------------------------------------------------------------------------
+12 m/s steady winds at 30 degrees, with shear
+---------------------------------------------------------------------------------------------------------------
+False         Echo           - Echo input data to <RootName>.ech (flag)
+          1   WindType       - switch for wind file type (1=steady; 2=uniform; 3=binary TurbSim FF; 4=binary Bladed-style FF; 5=HAWC format; 6=User defined; 7=native Bladed FF)
+         30   PropagationDir - Direction of wind propagation (meteorological rotation from aligned with X (positive rotates towards -Y) -- degrees) (not used for native Bladed format WindType=7)
+          0   VFlowAng       - Upflow angle (degrees) (not used for native Bladed format WindType=7)
+      False   VelInterpCubic - Use cubic interpolation for velocity in time (false=linear, true=cubic) [Used with WindType=2,3,4,5,7]
+          1   NWindVel       - Number of points to output the wind velocity    (0 to 9)
+          0   WindVxiList    - List of coordinates in the inertial X direction (m)
+          0   WindVyiList    - List of coordinates in the inertial Y direction (m)
+     42.672   WindVziList    - List of coordinates in the inertial Z direction (m)
+================== Parameters for Steady Wind Conditions [used only for WindType = 1] =========================
+         12   HWindSpeed     - Horizontal wind speed                           (m/s)
+     42.672   RefHt          - Reference height for horizontal wind speed      (m)
+        0.2   PLExp          - Power law exponent                              (-)
+================== Parameters for Uniform wind file   [used only for WindType = 2] ============================
+"Wind/Shr12_30.wnd"    FileName_Uni   - Filename of time series data for uniform wind field.      (-)
+     42.672   RefHt_Uni      - Reference height for horizontal wind speed                (m)
+     27.309   RefLength      - Reference length for linear horizontal and vertical sheer (-)
+================== Parameters for Binary TurbSim Full-Field files   [used only for WindType = 3] ==============
+"Wind/Shr12_30.wnd"    FileName_BTS   - Name of the Full field wind file to use (.bts)
+================== Parameters for Binary Bladed-style Full-Field files   [used only for WindType = 4 or WindType = 7] =========
+"Wind/Shr12_30"    FileNameRoot   - WindType=4: Rootname of the full-field wind file to use (.wnd, .sum); WindType=7: name of the intermediate file with wind scaling values
+False         TowerFile      - Have tower file (.twr) (flag) ignored when WindType = 7
+================== Parameters for HAWC-format binary files  [Only used with WindType = 5] =====================
+"wasp\Output\basic_5u.bin"    FileName_u     - name of the file containing the u-component fluctuating wind (.bin)
+"wasp\Output\basic_5v.bin"    FileName_v     - name of the file containing the v-component fluctuating wind (.bin)
+"wasp\Output\basic_5w.bin"    FileName_w     - name of the file containing the w-component fluctuating wind (.bin)
+         64   nx             - number of grids in the x direction (in the 3 files above) (-)
+         32   ny             - number of grids in the y direction (in the 3 files above) (-)
+         32   nz             - number of grids in the z direction (in the 3 files above) (-)
+         16   dx             - distance (in meters) between points in the x direction    (m)
+          3   dy             - distance (in meters) between points in the y direction    (m)
+          3   dz             - distance (in meters) between points in the z direction    (m)
+     42.672   RefHt_Hawc     - reference height; the height (in meters) of the vertical center of the grid (m)
+  -------------   Scaling parameters for turbulence   ---------------------------------------------------------
+          1   ScaleMethod    - Turbulence scaling method   [0 = none, 1 = direct scaling, 2 = calculate scaling factor based on a desired standard deviation]
+          1   SFx            - Turbulence scaling factor for the x direction (-)   [ScaleMethod=1]
+          1   SFy            - Turbulence scaling factor for the y direction (-)   [ScaleMethod=1]
+jessesarpong-mensah@MacBookAir AWT_YFix_WSt % python3 ~/sweep.py AWT_YFix_WSt_InflowWind.dat PropagationDir=5:30 HWindSpeed=5:30 RefHt=10:50 -n 30 --workers 5
+[4] ok: PropagationDir_16.9634_HWindSpeed_10.981_RefHt_21.4088
+[0] ok: PropagationDir_11.0217_HWindSpeed_16.3009_RefHt_47.5219
+[1] ok: PropagationDir_16.0855_HWindSpeed_25.7549_RefHt_14.0325
+[2] ok: PropagationDir_10.1991_HWindSpeed_21.8449_RefHt_23.1625
+[3] ok: PropagationDir_27.1247_HWindSpeed_23.8577_RefHt_23.431
+[6] ok: PropagationDir_17.6436_HWindSpeed_10.3069_RefHt_39.6559
+[9] ok: PropagationDir_12.4635_HWindSpeed_17.3714_RefHt_46.4226
+[7] ok: PropagationDir_9.7046_HWindSpeed_29.1911_RefHt_40.8092
+[5] ok: PropagationDir_28.144_HWindSpeed_28.7045_RefHt_19.2482
+[8] ok: PropagationDir_28.518_HWindSpeed_26.5045_RefHt_16.0444
+[10] ok: PropagationDir_21.046_HWindSpeed_17.5271_RefHt_20.2322
+[14] ok: PropagationDir_25.2498_HWindSpeed_7.2397_RefHt_35.557
+[11] ok: PropagationDir_24.6913_HWindSpeed_22.942_RefHt_35.0807
+[12] ok: PropagationDir_8.2251_HWindSpeed_14.6036_RefHt_12.3641
+[13] ok: PropagationDir_6.1085_HWindSpeed_15.469_RefHt_10.2231
+[15] ok: PropagationDir_15.1627_HWindSpeed_20.5104_RefHt_49.6156
+[17] ok: PropagationDir_9.1605_HWindSpeed_12.6776_RefHt_43.7802
+[19] ok: PropagationDir_22.8594_HWindSpeed_19.8835_RefHt_27.1806
+[16] ok: PropagationDir_5.2646_HWindSpeed_14.0502_RefHt_31.0668
+[18] ok: PropagationDir_29.4124_HWindSpeed_24.3494_RefHt_32.0548
+[20] ok: PropagationDir_26.1097_HWindSpeed_8.7741_RefHt_38.5797
+[22] ok: PropagationDir_20.3673_HWindSpeed_6.4134_RefHt_17.9589
+[21] ok: PropagationDir_18.5292_HWindSpeed_18.6377_RefHt_33.2619
+[23] ok: PropagationDir_12.9694_HWindSpeed_27.3212_RefHt_42.7886
+[24] ok: PropagationDir_6.7888_HWindSpeed_8.1384_RefHt_13.9223
+[25] ok: PropagationDir_22.2655_HWindSpeed_5.5887_RefHt_29.1174
+[26] ok: PropagationDir_13.7025_HWindSpeed_21.0134_RefHt_27.7809
+[27] ok: PropagationDir_23.828_HWindSpeed_11.8216_RefHt_45.7774
+[29] ok: PropagationDir_19.6151_HWindSpeed_9.8656_RefHt_25.3319
+[28] ok: PropagationDir_14.9811_HWindSpeed_28.2583_RefHt_37.0369
+
+done: 30 succeeded, 0 failed
+jessesarpong-mensah@MacBookAir AWT_YFix_WSt % python3 ~/build_table.py "PropagationDir_*_HWindSpeed_*_RefHt_*" --cols RotTorq
+    PropagationDir  HWindSpeed    RefHt  RotTorq_mean  RotTorq_peak
+12          5.2646     14.0502  31.0668     44.684637     48.410801
+6           6.1085     15.4690  10.2231     44.327795     52.224865
+21          6.7888      8.1384  13.9223     25.972785     26.964689
+23          8.2251     14.6036  12.3641     46.185583     50.513508
+28          9.1605     12.6776  43.7802     38.894718     40.268158
+24          9.7046     29.1911  40.8092     50.905875     55.971928
+16         10.1991     21.8449  23.1625     46.411040     55.015377
+14         11.0217     16.3009  47.5219     47.196277     49.299313
+19         12.4635     17.3714  46.4226     49.115106     51.131153
+27         12.9694     27.3212  42.7886     48.454225     51.872127
+22         13.7025     21.0134  27.7809     40.079828     42.876328
+7          14.9811     28.2583  37.0369     56.211853     59.680004
+13         15.1627     20.5104  49.6156     48.396056     49.948120
+8          16.0855     25.7549  14.0325     57.634171     61.381340
+11         16.9634     10.9810  21.4088     38.985027     40.144005
+1          17.6436     10.3069  39.6559     28.109154     28.838955
+18         18.5292     18.6377  33.2619     49.177341     50.786583
+29         19.6151      9.8656  25.3319     30.459720     31.210735
+15         20.3673      6.4134  17.9589     11.021934     11.452231
+20         21.0460     17.5271  20.2322     46.575080     47.734398
+10         22.2655      5.5887  29.1174      4.106873      4.416997
+9          22.8594     19.8835  27.1806     44.269562     46.737434
+3          23.8280     11.8216  45.7774     33.962675     34.709953
+2          24.6913     22.9420  35.0807     48.694359     56.120396
+4          25.2498      7.2397  35.5570      9.989424     10.364309
+0          26.1097      8.7741  38.5797     17.910086     18.412960
+17         27.1247     23.8577  23.4310     50.468467     59.093903
+26         28.1440     28.7045  19.2482     48.090354     56.753132
+5          28.5180     26.5045  16.0444     47.558796     58.579895
+25         29.4124     24.3494  32.0548     50.825308     63.031315
+jessesarpong-mensah@MacBookAir AWT_YFix_WSt %  
