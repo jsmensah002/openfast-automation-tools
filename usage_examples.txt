@@ -1,0 +1,258 @@
+Last login: Thu Sep 24 11:15:47 on ttys000
+jessesarpong-mensah@MacBookAir ~ % mkdir CaseStudy
+jessesarpong-mensah@MacBookAir ~ % cd CaseStudy
+jessesarpong-mensah@MacBookAir CaseStudy % python3 ~/case_setup.py WP_VSP_WTurb_PitchFail
+copied WP_VSP_WTurb_PitchFail
+copied WP_Baseline (needed by WP_VSP_WTurb_PitchFail)
+jessesarpong-mensah@MacBookAir CaseStudy % ls
+WP_Baseline		WP_VSP_WTurb_PitchFail
+jessesarpong-mensah@MacBookAir CaseStudy % cd WP_VSP_WTurb_PitchFail
+jessesarpong-mensah@MacBookAir WP_VSP_WTurb_PitchFail % ls                      
+pitch.ipt				WP_VSP_WTurb_PitchFail_ElastoDyn.dat
+README.md				WP_VSP_WTurb_PitchFail_ServoDyn.dat
+WP_Baseline_AeroDyn.dat			WP_VSP_WTurb_PitchFail.fst
+WP_Baseline_InflowWind_12mps.dat	WP_VSP_WTurb_PitchFail.outb
+jessesarpong-mensah@MacBookAir WP_VSP_WTurb_PitchFail % python3 ~/fix_output.py WP_VSP_WTurb_PitchFail.fst
+WP_VSP_WTurb_PitchFail.fst: OutFileFmt set to 1 (text output)
+jessesarpong-mensah@MacBookAir WP_VSP_WTurb_PitchFail % ls
+pitch.ipt				WP_VSP_WTurb_PitchFail_ElastoDyn.dat
+README.md				WP_VSP_WTurb_PitchFail_ServoDyn.dat
+WP_Baseline_AeroDyn.dat			WP_VSP_WTurb_PitchFail.fst
+WP_Baseline_InflowWind_12mps.dat	WP_VSP_WTurb_PitchFail.outb
+jessesarpong-mensah@MacBookAir WP_VSP_WTurb_PitchFail % openfast WP_VSP_WTurb_PitchFail.fst
+
+ **************************************************************************************************
+ OpenFAST
+
+ Copyright (C) 2026 National Renewable Energy Laboratory
+ Copyright (C) 2026 Envision Energy USA LTD
+
+ This program is licensed under Apache License Version 2.0 and comes with ABSOLUTELY NO WARRANTY.
+ See the "LICENSE" file distributed with this software for details.
+ **************************************************************************************************
+
+ OpenFAST-v5.0.0
+ Compile Info:
+  - Compiler: GCC version 15.2.0
+  - Architecture: 64 bit
+  - Precision: single
+  - OpenMP: No
+  - Date: Mar 13 2026
+  - Time: 03:21:35
+ Execution Info:
+  - Date: 09/24/2026
+  - Time: 11:17:54+0000
+
+ OpenFAST input file heading:
+     FAST Certification Test #11: WindPACT 1.5 MW Baseline with many DOFs undergoing a pitch
+     failure.
+
+  Running ElastoDyn.
+  Running InflowWind.
+
+    Reading a 7x7 grid (84 m wide, 42.288 m to 126.29 m above ground) with a characteristic wind
+    speed of 12 m/s.
+
+    Processed 940 time steps of 20-Hz full-field data (46.95 seconds).
+  Running AeroDyn.
+    AeroDyn: projMod: 1
+    Projection: legacy (NoSweepPitchTwist), BEM: legacy (2D)
+ Warning: Turning off Unsteady Aerodynamics because polar has constant data. (node 1, blade 1)
+ Warning: Turning off Unsteady Aerodynamics because polar has constant data. (node 2, blade 1)
+ Warning: Turning off Unsteady Aerodynamics because polar has constant data. (node 1, blade 2)
+ Warning: Turning off Unsteady Aerodynamics because polar has constant data. (node 2, blade 2)
+ Warning: Turning off Unsteady Aerodynamics because polar has constant data. (node 1, blade 3)
+ Warning: Turning off Unsteady Aerodynamics because polar has constant data. (node 2, blade 3)
+  Running ServoDyn.
+  Time: 0 of 20 seconds.
+ Time: 4 of 20 seconds.  Estimated final completion at 11:18:00 (in 0.000 days).                  
+ ***********************************************
+ Running with control option using data from:
+  Speed controller for ADAMS WindPACT 15A1001 model April, 2002.
+ ***********************************************
+
+ Time: 14 of 20 seconds.  Estimated final completion at 11:18:00 (in 0.000 days).                 
+ FAST_Solution:FAST_UpdateStates:Solver_Step:FAST_CalcOutput:AD_CalcOutput:RotCalcOutput:BEMT_CalcO
+ utput(node 17, blade 1):UA_CalcOutput:UA_BlendSteady:Temporarily turning off UA due to high angle
+ of attack or low relative velocity. This warning will not be repeated though the condition may
+ persist.
+
+                                                                                                  
+  Total Real Time:       5.786 seconds
+  Total CPU Time:        5.7315 seconds
+  Simulation CPU Time:   5.678 seconds
+  Simulated Time:        20 seconds
+  Time Ratio (Sim/CPU):  3.5224
+
+  OpenFAST terminated normally.
+
+jessesarpong-mensah@MacBookAir WP_VSP_WTurb_PitchFail % ls
+pitch.ipt				WP_VSP_WTurb_PitchFail.ED.sum
+README.md				WP_VSP_WTurb_PitchFail.fst
+WP_Baseline_AeroDyn.dat			WP_VSP_WTurb_PitchFail.IfW.sum
+WP_Baseline_InflowWind_12mps.dat	WP_VSP_WTurb_PitchFail.out
+WP_VSP_WTurb_PitchFail_ElastoDyn.dat	WP_VSP_WTurb_PitchFail.outb
+WP_VSP_WTurb_PitchFail_ServoDyn.dat	WP_VSP_WTurb_PitchFail.SrvD.sum
+WP_VSP_WTurb_PitchFail.AD.sum		WP_VSP_WTurb_PitchFail.sum
+WP_VSP_WTurb_PitchFail.ech		WP_VSP_WTurb_PitchFail.UA.sum
+jessesarpong-mensah@MacBookAir WP_VSP_WTurb_PitchFail % open -e WP_VSP_WTurb_PitchFail_ElastoDyn.dat
+jessesarpong-mensah@MacBookAir WP_VSP_WTurb_PitchFail % head -40 WP_Baseline_InflowWind_12mps.dat
+------- InflowWind INPUT FILE -------------------------------------------------------------------------
+Turbulent 12 m/s winds for FAST CertTests #11 and #13
+---------------------------------------------------------------------------------------------------------------
+False         Echo           - Echo input data to <RootName>.ech (flag)
+          4   WindType       - switch for wind file type (1=steady; 2=uniform; 3=binary TurbSim FF; 4=binary Bladed-style FF; 5=HAWC format; 6=User defined; 7=native Bladed FF)
+          0   PropagationDir - Direction of wind propagation (meteorological rotation from aligned with X (positive rotates towards -Y) -- degrees) (not used for native Bladed format WindType=7)
+          0   VFlowAng       - Upflow angle (degrees) (not used for native Bladed format WindType=7)
+      False   VelInterpCubic - Use cubic interpolation for velocity in time (false=linear, true=cubic) [Used with WindType=2,3,4,5,7]
+          1   NWindVel       - Number of points to output the wind velocity    (0 to 9)
+          0   WindVxiList    - List of coordinates in the inertial X direction (m)
+          0   WindVyiList    - List of coordinates in the inertial Y direction (m)
+    84.2876   WindVziList    - List of coordinates in the inertial Z direction (m)
+================== Parameters for Steady Wind Conditions [used only for WindType = 1] =========================
+         12   HWindSpeed     - Horizontal wind speed                           (m/s)
+    84.2876   RefHt          - Reference height for horizontal wind speed      (m)
+        0.2   PLExp          - Power law exponent                              (-)
+================== Parameters for Uniform wind file   [used only for WindType = 2] ============================
+"../WP_Baseline/Wind/84m_12mps.wnd"    FileName_Uni   - Filename of time series data for uniform wind field.      (-)
+    84.2876   RefHt_Uni      - Reference height for horizontal wind speed                (m)
+         70   RefLength      - Reference length for linear horizontal and vertical sheer (-)
+================== Parameters for Binary TurbSim Full-Field files   [used only for WindType = 3] ==============
+"../WP_Baseline/Wind/84m_12mps.wnd"    FileName_BTS   - Name of the Full field wind file to use (.bts)
+================== Parameters for Binary Bladed-style Full-Field files   [used only for WindType = 4 or WindType = 7] =========
+"../WP_Baseline/Wind/84m_12mps"    FileNameRoot   - WindType=4: Rootname of the full-field wind file to use (.wnd, .sum); WindType=7: name of the intermediate file with wind scaling values
+False         TowerFile      - Have tower file (.twr) (flag) ignored when WindType = 7
+================== Parameters for HAWC-format binary files  [Only used with WindType = 5] =====================
+"wasp\Output\basic_5u.bin"    FileName_u     - name of the file containing the u-component fluctuating wind (.bin)
+"wasp\Output\basic_5v.bin"    FileName_v     - name of the file containing the v-component fluctuating wind (.bin)
+"wasp\Output\basic_5w.bin"    FileName_w     - name of the file containing the w-component fluctuating wind (.bin)
+         64   nx             - number of grids in the x direction (in the 3 files above) (-)
+         32   ny             - number of grids in the y direction (in the 3 files above) (-)
+         32   nz             - number of grids in the z direction (in the 3 files above) (-)
+         16   dx             - distance (in meters) between points in the x direction    (m)
+          3   dy             - distance (in meters) between points in the y direction    (m)
+          3   dz             - distance (in meters) between points in the z direction    (m)
+    84.2876   RefHt_Hawc     - reference height; the height (in meters) of the vertical center of the grid (m)
+  -------------   Scaling parameters for turbulence   ---------------------------------------------------------
+          1   ScaleMethod    - Turbulence scaling method   [0 = none, 1 = direct scaling, 2 = calculate scaling factor based on a desired standard deviation]
+          1   SFx            - Turbulence scaling factor for the x direction (-)   [ScaleMethod=1]
+          1   SFy            - Turbulence scaling factor for the y direction (-)   [ScaleMethod=1]
+jessesarpong-mensah@MacBookAir WP_VSP_WTurb_PitchFail % python3 ~/sweep.py WP_Baseline_InflowWind_12mps.dat:PropagationDir=0:30 HWindSpeed=5:20 WP_VSP_WTurb_PitchFail_ElastoDyn.dat:RotSpeed=10:25 -n 100 --workers 5
+[3] ok: PropagationDir_12.4649_HWindSpeed_12.4444_RotSpeed_19.611
+[4] ok: PropagationDir_11.5068_HWindSpeed_6.6766_RotSpeed_18.6335
+[0] ok: PropagationDir_14.4678_HWindSpeed_17.2342_RotSpeed_18.8712
+[1] ok: PropagationDir_21.3908_HWindSpeed_10.9859_RotSpeed_12.5537
+[2] ok: PropagationDir_17.1717_HWindSpeed_15.9821_RotSpeed_21.9808
+[7] ok: PropagationDir_16.6936_HWindSpeed_14.0044_RotSpeed_20.966
+[5] ok: PropagationDir_2.3318_HWindSpeed_19.0168_RotSpeed_12.5404
+[6] ok: PropagationDir_3.6517_HWindSpeed_7.9053_RotSpeed_12.7363
+[8] ok: PropagationDir_21.9665_HWindSpeed_19.8208_RotSpeed_20.88
+[9] ok: PropagationDir_7.1869_HWindSpeed_7.2269_RotSpeed_11.6975
+[10] ok: PropagationDir_15.6766_HWindSpeed_16.4049_RotSpeed_15.6511
+[11] ok: PropagationDir_19.6889_HWindSpeed_6.2796_RotSpeed_20.6216
+[13] ok: PropagationDir_8.7991_HWindSpeed_13.6344_RotSpeed_20.3751
+[12] ok: PropagationDir_17.061_HWindSpeed_17.0786_RotSpeed_11.466
+[14] ok: PropagationDir_2.7899_HWindSpeed_10.5031_RotSpeed_24.1252
+[18] ok: PropagationDir_24.0885_HWindSpeed_13.8829_RotSpeed_13.6812
+[15] ok: PropagationDir_26.4586_HWindSpeed_8.3919_RotSpeed_15.9568
+[17] ok: PropagationDir_4.1978_HWindSpeed_5.932_RotSpeed_11.1003
+[16] ok: PropagationDir_23.7953_HWindSpeed_19.379_RotSpeed_22.72
+[19] ok: PropagationDir_4.6294_HWindSpeed_12.929_RotSpeed_23.6328
+[21] ok: PropagationDir_15.3705_HWindSpeed_5.8048_RotSpeed_17.717
+[20] ok: PropagationDir_26.7995_HWindSpeed_11.5293_RotSpeed_15.1652
+[22] ok: PropagationDir_21.1322_HWindSpeed_19.2044_RotSpeed_16.4454
+[23] ok: PropagationDir_28.669_HWindSpeed_13.3678_RotSpeed_23.8887
+[24] ok: PropagationDir_22.244_HWindSpeed_14.4149_RotSpeed_19.8913
+[26] ok: PropagationDir_23.5329_HWindSpeed_16.5824_RotSpeed_10.0504
+[25] ok: PropagationDir_14.0156_HWindSpeed_8.856_RotSpeed_19.5007
+[28] ok: PropagationDir_3.5932_HWindSpeed_14.2865_RotSpeed_14.3916
+[27] ok: PropagationDir_1.0781_HWindSpeed_8.6279_RotSpeed_13.575
+[29] ok: PropagationDir_17.8614_HWindSpeed_19.9758_RotSpeed_23.4248
+[31] ok: PropagationDir_13.6857_HWindSpeed_11.2548_RotSpeed_13.9555
+[32] ok: PropagationDir_20.5915_HWindSpeed_13.2369_RotSpeed_14.3323
+[30] ok: PropagationDir_21.8543_HWindSpeed_16.8956_RotSpeed_24.0331
+[33] ok: PropagationDir_27.3114_HWindSpeed_9.0637_RotSpeed_11.245
+[34] ok: PropagationDir_20.3202_HWindSpeed_16.1046_RotSpeed_10.4832
+[35] ok: PropagationDir_10.8849_HWindSpeed_12.7326_RotSpeed_18.8092
+[38] ok: PropagationDir_16.147_HWindSpeed_7.7215_RotSpeed_16.1862
+[36] ok: PropagationDir_10.7711_HWindSpeed_18.2146_RotSpeed_10.6816
+[37] ok: PropagationDir_5.0393_HWindSpeed_12.6041_RotSpeed_15.7631
+[39] ok: PropagationDir_0.0842_HWindSpeed_9.4352_RotSpeed_22.8059
+[40] ok: PropagationDir_9.1248_HWindSpeed_6.8525_RotSpeed_12.3873
+[41] ok: PropagationDir_25.3753_HWindSpeed_17.5938_RotSpeed_20.7259
+[43] ok: PropagationDir_5.2237_HWindSpeed_14.8744_RotSpeed_13.0112
+[42] ok: PropagationDir_5.901_HWindSpeed_17.7283_RotSpeed_22.2845
+[44] ok: PropagationDir_28.3257_HWindSpeed_19.648_RotSpeed_11.5614
+[45] ok: PropagationDir_6.8932_HWindSpeed_15.5062_RotSpeed_17.8777
+[46] ok: PropagationDir_12.0652_HWindSpeed_5.2876_RotSpeed_18.027
+[48] ok: PropagationDir_23.258_HWindSpeed_19.51_RotSpeed_15.3503
+[47] ok: PropagationDir_8.5528_HWindSpeed_12.2093_RotSpeed_16.6642
+[49] ok: PropagationDir_6.4438_HWindSpeed_10.7842_RotSpeed_19.2968
+[50] ok: PropagationDir_16.2521_HWindSpeed_9.8156_RotSpeed_14.629
+[51] ok: PropagationDir_0.4338_HWindSpeed_17.8837_RotSpeed_24.5992
+[52] ok: PropagationDir_2.6156_HWindSpeed_10.1511_RotSpeed_18.291
+[53] ok: PropagationDir_13.2694_HWindSpeed_18.1838_RotSpeed_13.7626
+[54] ok: PropagationDir_6.2309_HWindSpeed_8.1444_RotSpeed_14.1168
+[55] ok: PropagationDir_25.9887_HWindSpeed_15.3755_RotSpeed_24.2788
+[56] ok: PropagationDir_5.6049_HWindSpeed_7.5571_RotSpeed_13.2564
+[58] ok: PropagationDir_28.1506_HWindSpeed_11.4433_RotSpeed_11.8847
+[57] ok: PropagationDir_1.3455_HWindSpeed_5.1116_RotSpeed_22.3096
+[59] ok: PropagationDir_1.8023_HWindSpeed_18.5162_RotSpeed_23.0877
+[61] ok: PropagationDir_27.2052_HWindSpeed_8.4842_RotSpeed_16.9508
+[60] ok: PropagationDir_22.8328_HWindSpeed_6.066_RotSpeed_19.3722
+[62] ok: PropagationDir_24.4879_HWindSpeed_16.8358_RotSpeed_10.788
+[63] ok: PropagationDir_19.4213_HWindSpeed_5.4595_RotSpeed_17.6139
+[64] ok: PropagationDir_15.2632_HWindSpeed_17.9253_RotSpeed_17.477
+[65] ok: PropagationDir_18.2462_HWindSpeed_14.6601_RotSpeed_24.7188
+[66] ok: PropagationDir_8.3411_HWindSpeed_15.7535_RotSpeed_14.6834
+[67] ok: PropagationDir_9.3085_HWindSpeed_18.7249_RotSpeed_20.3284
+[68] ok: PropagationDir_0.8958_HWindSpeed_15.3156_RotSpeed_14.9302
+[69] ok: PropagationDir_14.1967_HWindSpeed_5.7317_RotSpeed_21.3241
+[70] ok: PropagationDir_9.9917_HWindSpeed_6.5628_RotSpeed_12.97
+[71] ok: PropagationDir_19.8588_HWindSpeed_11.9427_RotSpeed_15.4392
+[72] ok: PropagationDir_29.9607_HWindSpeed_13.8314_RotSpeed_18.1109
+[73] ok: PropagationDir_25.0807_HWindSpeed_13.5049_RotSpeed_20.1267
+[74] ok: PropagationDir_18.4011_HWindSpeed_16.2567_RotSpeed_22.107
+[75] ok: PropagationDir_27.6226_HWindSpeed_13.0963_RotSpeed_16.0667
+[76] ok: PropagationDir_28.9098_HWindSpeed_17.4341_RotSpeed_16.5789
+[77] ok: PropagationDir_29.5743_HWindSpeed_15.0551_RotSpeed_10.3606
+[78] ok: PropagationDir_3.0201_HWindSpeed_8.1793_RotSpeed_19.9799
+[79] ok: PropagationDir_20.7646_HWindSpeed_9.0473_RotSpeed_23.3336
+[80] ok: PropagationDir_12.9512_HWindSpeed_9.6805_RotSpeed_22.5651
+[81] ok: PropagationDir_1.6408_HWindSpeed_14.5091_RotSpeed_21.5698
+[82] ok: PropagationDir_4.3191_HWindSpeed_10.0381_RotSpeed_21.1939
+[84] ok: PropagationDir_18.7638_HWindSpeed_9.6128_RotSpeed_19.1145
+[83] ok: PropagationDir_9.7722_HWindSpeed_12.1022_RotSpeed_23.6699
+[85] ok: PropagationDir_14.7762_HWindSpeed_18.3775_RotSpeed_13.4342
+[87] ok: PropagationDir_22.5526_HWindSpeed_15.0034_RotSpeed_18.5284
+[86] ok: PropagationDir_19.18_HWindSpeed_11.0608_RotSpeed_21.8281
+[88] ok: PropagationDir_24.6237_HWindSpeed_7.3752_RotSpeed_21.5073
+[89] ok: PropagationDir_10.4539_HWindSpeed_15.9327_RotSpeed_24.5468
+[90] ok: PropagationDir_25.7834_HWindSpeed_11.7238_RotSpeed_12.092
+[91] ok: PropagationDir_29.2227_HWindSpeed_6.9979_RotSpeed_12.191
+[92] ok: PropagationDir_11.9046_HWindSpeed_5.3743_RotSpeed_22.9187
+[93] ok: PropagationDir_7.2447_HWindSpeed_10.6935_RotSpeed_11.0228
+[94] ok: PropagationDir_7.729_HWindSpeed_11.8626_RotSpeed_10.2143
+[95] ok: PropagationDir_12.7751_HWindSpeed_10.3926_RotSpeed_15.044
+[96] ok: PropagationDir_17.5429_HWindSpeed_7.5347_RotSpeed_17.225
+[97] ok: PropagationDir_11.3844_HWindSpeed_6.3613_RotSpeed_17.1851
+[98] ok: PropagationDir_7.8469_HWindSpeed_18.8146_RotSpeed_16.7531
+[99] ok: PropagationDir_26.1594_HWindSpeed_9.2331_RotSpeed_24.9036
+
+done: 100 succeeded, 0 failed
+jessesarpong-mensah@MacBookAir WP_VSP_WTurb_PitchFail % python3 ~/build_table.py "PropagationDir_*_HWindSpeed_*_RotSpeed_*" --cols RootMyb1                                                
+    PropagationDir  HWindSpeed  RotSpeed  RootMyb1_mean  RootMyb1_peak
+53          0.0842      9.4352   22.8059     524.355893     2131.30273
+89          0.4338     17.8837   24.5992     525.638965     2368.62720
+69          0.8958     15.3156   14.9302     513.422801     2122.92944
+96          1.0781      8.6279   13.5750     498.367168     2021.85510
+18          1.3455      5.1116   22.3096     525.228737     2128.92236
+..             ...         ...       ...            ...            ...
+71         28.6690     13.3678   23.8887     615.778235     1854.66113
+37         28.9098     17.4341   16.5789     558.884426     1734.14099
+55         29.2227      6.9979   12.1910     462.777235     1617.23071
+17         29.5743     15.0551   10.3606     371.730952     1601.14124
+15         29.9607     13.8314   18.1109     564.875918     1760.04626
+
+[100 rows x 5 columns]
+jessesarpong-mensah@MacBookAir WP_VSP_WTurb_PitchFail % 
