@@ -6,3 +6,4 @@ File Descriptions:
 - fix_output.py: Modifies OpenFAST configuration driver files to enforce standardized text-based formatting.
 - sweep.py: Executes concurrent, multi-worker parallel simulation sweeps across defined ranges
 
+The table generated in the usage_examples.txt can be used to build a predictive model.
